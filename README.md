@@ -23,6 +23,25 @@ To create and apply the database migrations, follow these steps:
 
 3. Verify that the migration was successful by checking the `prisma/migrations` directory for the new migration file.
 
+### Applying Existing Migrations
+
+If you want to apply existing migrations without creating new ones (typically in production or when pulling changes from other developers), use:
+```bash
+npx prisma migrate deploy
+```
+
+This command will:
+- Apply any pending migrations that haven't been run yet
+- Never create new migrations
+- Never reset the database
+- Never modify the schema.prisma file
+- Never regenerate the Prisma Client
+
+Use this command when:
+- Deploying to production
+- Setting up a new development environment
+- Pulling changes from other developers that include new migrations
+
 ## Note
 - Make sure your database connection string is properly configured in your `.env` file before running migrations
 - Running migrations will modify your database schema, so make sure to backup your data if needed
