@@ -1,4 +1,5 @@
 import { prismaClient } from '../routes/index.js';
+import { hashSync } from 'bcrypt';
 
 export const RegisterController = async (req, res) => {
 	try {
@@ -20,8 +21,10 @@ export const RegisterController = async (req, res) => {
 				.json({ error: { message: 'User already exists!' } });
 		}
 
+		const hashedPassword = hashSync(password, 10);
+
 		const user = await prismaClient.user.create({
-			data: { name, email, password },
+			data: { name, email, password: hashedPassword },
 		});
 
 		res.status(201).json({ message: 'User registered successfully.', user });
