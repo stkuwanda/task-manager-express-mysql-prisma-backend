@@ -1,5 +1,8 @@
 import { prismaClient } from '../prisma-client.js';
 import { compareSync, hashSync } from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export const RegisterController = async (req, res) => {
 	try {
@@ -59,7 +62,9 @@ export const LoginController = async (req, res) => {
 				.json({ error: { message: 'Invalid credentials!' } });
 		}
 
-		res.status(200).json({ message: 'Login successful.', user: existingUser });
+		const token = jwt.sign({ userId: existingUser.id}, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+		res.status(200).json({ message: 'Login successful.', user: existingUser, token });
 	} catch (err) {
 		res.status(500).json({ error: { message: 'Internal server error.' } });
 	}
