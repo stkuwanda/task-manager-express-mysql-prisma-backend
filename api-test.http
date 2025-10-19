@@ -8,9 +8,9 @@ POST http://localhost:4000/api/auth/register HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "John Doe",
-  "email": "john@doe.com",
-  "password": "securepassword"
+    "name": "John Doe",
+    "email": "john@doe.com",
+    "password": "securepassword"
 }
 
 ### Login with existing user
@@ -19,8 +19,8 @@ POST http://localhost:4000/api/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "john@doe.com",
-  "password": "securepassword"
+    "email": "john@doe.com",
+    "password": "securepassword"
 }
 
 ### Create a new task
@@ -30,8 +30,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
 Content-Type: application/json
 
 {
-  "title": "Finish the project",
-  "description": "Complete the express task manager app by end of the week."
+    "title": "Finish the project",
+    "description": "Complete the express task manager app by end of the week."
 }
 
 ### Update a task
@@ -41,11 +41,34 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhd
 Content-Type: application/json
 
 {
-  "title": "Finish the report",
-  "description": "Complete the report by end of the week."
+    "title": "Finish the report",
+    "description": "Complete the report by end of the week."
 }
 
 ### Update a task
 
-DELETE  http://localhost:4000/api/task/delete/1 HTTP/1.1
+DELETE http://localhost:4000/api/task/delete/1 HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc2MDg1ODU2OSwiZXhwIjoxNzYwODYyMTY5fQ.l71y-khVFB3qi-02-3nqtpLSYNXqkCVoSxZrH72Pjyw
+
+### Fetch tasks (first page, default limit)
+
+GET http://localhost:4000/api/task/fetch?page=1&limit=100
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc2MDg1ODU2OSwiZXhwIjoxNzYwODYyMTY5fQ.l71y-khVFB3qi-02-3nqtpLSYNXqkCVoSxZrH72Pjyw
+Accept: application/json
+
+### Fetch tasks (second page, 5 per page)
+
+GET http://localhost:4000/api/task/fetch?page=2&limit=5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc2MDg1ODU2OSwiZXhwIjoxNzYwODYyMTY5fQ.l71y-khVFB3qi-02-3nqtpLSYNXqkCVoSxZrH72Pjyw
+Accept: application/json
+
+### Fetch tasks without authentication (should return 401)
+
+GET http://localhost:4000/api/task/fetch?page=1&limit=10
+Accept: application/json
+
+### Fetch tasks without pagination params (should use defaults: page=1, limit=100)
+
+GET http://localhost:4000/api/task/fetch
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc2MDg1ODU2OSwiZXhwIjoxNzYwODYyMTY5fQ.l71y-khVFB3qi-02-3nqtpLSYNXqkCVoSxZrH72Pjyw
+Accept: application/json

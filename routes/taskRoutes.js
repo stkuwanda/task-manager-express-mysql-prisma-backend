@@ -1,5 +1,5 @@
 import express from 'express';
-import { CreateTaskController, DeleteTaskController, UpdateTaskController } from '../controllers/taskController.js';
+import { CreateTaskController, DeleteTaskController, FetchTasksController, UpdateTaskController } from '../controllers/taskController.js';
 import { authMiddleware } from '../middleware/authMiddleware.js';
 
 const taskRouter = express.Router();
@@ -10,6 +10,6 @@ taskRouter.put('/update/:id', authMiddleware, UpdateTaskController);
 
 taskRouter.delete('/delete/:id', authMiddleware, DeleteTaskController);
 
-// taskRouter.get('/fetch-all',);
+taskRouter.get('/fetch', authMiddleware, FetchTasksController);
 
 export default taskRouter;

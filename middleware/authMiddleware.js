@@ -23,6 +23,6 @@ export const authMiddleware = (req, res, next) => {
     req.user = user;
     next();
 	} catch (error) {
-		return res.status(401).jsonn({ error: { message: 'Unauthorized!' } });
+		return res.status(401).json({ error: { message: 'Unauthorized!' } });
 	}
 };
