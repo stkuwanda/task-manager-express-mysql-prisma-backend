@@ -55,3 +55,27 @@ export const UpdateTaskController = async (req, res) => {
 			.json({ error: { message: 'Internal server error.' } });
 	}
 };
+
+export const DeleteTaskController = async (req, res) => {
+	try {
+		const taskId = await prismaClient.task.findUnique({
+			where: { id: Number(req.params.id) },
+		});
+
+		if (!taskId) {
+			return res.status(404).json({ error: { message: 'Not found!' } });
+		}
+
+		const deletedTask = await prismaClient.task.delete({
+			where: { id: Number(req.params.id) },
+		});
+
+		res
+			.status(200)
+			.json({ message: 'Task deleted successfully.', task: deletedTask });
+	} catch (err) {
+		return res
+			.status(500)
+			.json({ error: { message: 'Internal server error.' } });
+	}
+};

@@ -35,6 +35,7 @@ Content-Type: application/json
 }
 
 ### Update a task
+
 PUT http://localhost:4000/api/task/update/1 HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc2MDg1ODU2OSwiZXhwIjoxNzYwODYyMTY5fQ.l71y-khVFB3qi-02-3nqtpLSYNXqkCVoSxZrH72Pjyw
 Content-Type: application/json
@@ -43,3 +44,8 @@ Content-Type: application/json
   "title": "Finish the report",
   "description": "Complete the report by end of the week."
 }
+
+### Update a task
+
+DELETE  http://localhost:4000/api/task/delete/1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc2MDg1ODU2OSwiZXhwIjoxNzYwODYyMTY5fQ.l71y-khVFB3qi-02-3nqtpLSYNXqkCVoSxZrH72Pjyw
