@@ -23,3 +23,13 @@ Content-Type: application/json
   "email": "john@doe.com",
   "password": "securepassword"
 }
+
+### Create a new task
+POST http://localhost:4000/api/task/create HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc2MDg1MzU3OSwiZXhwIjoxNzYwODU3MTc5fQ.nCBt9HHM0YWS_3ZNoPJ6KZyuZRR02u4XnUakT7mrhbs
+Content-Type: application/json
+
+{
+  "title": "Finish the project",
+  "description": "Complete the express task manager app by end of the week."
+}
