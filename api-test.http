@@ -13,7 +13,6 @@ Content-Type: application/json
   "password": "securepassword"
 }
 
-
 ### Login with existing user
 
 POST http://localhost:4000/api/auth/login HTTP/1.1
@@ -25,6 +24,7 @@ Content-Type: application/json
 }
 
 ### Create a new task
+
 POST http://localhost:4000/api/task/create HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc2MDg1MzU3OSwiZXhwIjoxNzYwODU3MTc5fQ.nCBt9HHM0YWS_3ZNoPJ6KZyuZRR02u4XnUakT7mrhbs
 Content-Type: application/json
@@ -32,4 +32,14 @@ Content-Type: application/json
 {
   "title": "Finish the project",
   "description": "Complete the express task manager app by end of the week."
+}
+
+### Update a task
+PUT http://localhost:4000/api/task/update/1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc2MDg1ODU2OSwiZXhwIjoxNzYwODYyMTY5fQ.l71y-khVFB3qi-02-3nqtpLSYNXqkCVoSxZrH72Pjyw
+Content-Type: application/json
+
+{
+  "title": "Finish the report",
+  "description": "Complete the report by end of the week."
 }

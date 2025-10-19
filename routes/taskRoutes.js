@@ -1,12 +1,12 @@
 import express from 'express';
-import { CreateTaskController } from '../controllers/taskController.js';
+import { CreateTaskController, UpdateTaskController } from '../controllers/taskController.js';
 import { authMiddleware } from '../middleware/authMiddleware.js';
 
 const taskRouter = express.Router();
 
 taskRouter.post('/create', authMiddleware, CreateTaskController);
 
-// taskRouter.put('/update', );
+taskRouter.put('/update/:id', authMiddleware, UpdateTaskController);
 
 // taskRouter.delete('/delete',);
 

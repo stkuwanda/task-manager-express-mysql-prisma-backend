@@ -23,3 +23,35 @@ export const CreateTaskController = async (req, res) => {
 			.json({ error: { message: 'Internal server error.' } });
 	}
 };
+
+export const UpdateTaskController = async (req, res) => {
+	try {
+		const { id } = req.params;
+		const { title, description } = req.body;
+
+		if (!title || !description) {
+			return res.status(400).json({ error: { message: 'Missing fields!' } });
+		}
+
+		const taskId = await prismaClient.task.findUnique({
+			where: { id: Number(id) },
+		});
+
+		if (!taskId) {
+			return res.status(404).json({ error: { message: 'Not found!' } });
+		}
+
+		const updatedTask = await prismaClient.task.update({
+			where: { id: Number(id) },
+			data: { title, description },
+		});
+
+		res
+			.status(200)
+			.json({ message: 'Task updated successfully.', task: updatedTask });
+	} catch (err) {
+		return res
+			.status(500)
+			.json({ error: { message: 'Internal server error.' } });
+	}
+};
