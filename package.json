@@ -1,36 +1,40 @@
 {
-  "name": "task-manager-express-mysql-prisma-backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js",
-    "migrate:deploy": "npx prisma migrate deploy",
-    "migrate:reset": "npx prisma migrate reset",
-    "migrate:create": "npx prisma migrate dev",
-    "migrate:create-only": "npx prisma migrate dev --create-only"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/stkuwanda/task-manager-express-mysql-prisma-backend.git"
-  },
-  "keywords": [],
-  "author": "STK",
-  "license": "ISC",
-  "type": "module",
-  "bugs": {
-    "url": "https://github.com/stkuwanda/task-manager-express-mysql-prisma-backend/issues"
-  },
-  "homepage": "https://github.com/stkuwanda/task-manager-express-mysql-prisma-backend#readme",
-  "dependencies": {
-    "@prisma/client": "^6.17.1",
-    "bcrypt": "^6.0.0",
-    "dotenv": "^17.2.3",
-    "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "nodemon": "^3.1.10",
-    "prisma": "^6.17.1"
-  }
+	"name": "task-manager-express-mysql-prisma-backend",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "nodemon index.js",
+		"migrate:deploy": "npx prisma migrate deploy",
+		"migrate:reset": "npx prisma migrate reset",
+		"migrate:create": "npx prisma migrate dev",
+		"migrate:create-only": "npx prisma migrate dev --create-only",
+		"seed": "node prisma/seed.js"
+	},
+	"prisma": {
+		"seed": "node prisma/seed.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/stkuwanda/task-manager-express-mysql-prisma-backend.git"
+	},
+	"keywords": [],
+	"author": "STK",
+	"license": "ISC",
+	"type": "module",
+	"bugs": {
+		"url": "https://github.com/stkuwanda/task-manager-express-mysql-prisma-backend/issues"
+	},
+	"homepage": "https://github.com/stkuwanda/task-manager-express-mysql-prisma-backend#readme",
+	"dependencies": {
+		"@prisma/client": "^6.17.1",
+		"bcrypt": "^6.0.0",
+		"dotenv": "^17.2.3",
+		"express": "^5.1.0",
+		"jsonwebtoken": "^9.0.2",
+		"nodemon": "^3.1.10",
+		"prisma": "^6.17.1"
+	}
 }

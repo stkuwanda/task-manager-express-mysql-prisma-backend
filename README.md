@@ -45,3 +45,24 @@ Use this command when:
 ## Note
 - Make sure your database connection string is properly configured in your `.env` file before running migrations
 - Running migrations will modify your database schema, so make sure to backup your data if needed
+
+## Seeding the Database
+
+A seeder script is provided to populate the database with sample data (4 users, 10 tasks per user).
+
+1. Make sure dependencies are installed and your `.env` is configured:
+```bash
+npm install
+```
+
+2. Run the seed script directly with npm:
+```bash
+npm run seed
+```
+
+Or use the Prisma seeding command (Prisma will run the script configured in package.json):
+```bash
+npx prisma db seed
+```
+
+The seed is idempotent: re-running it will not create duplicate users and will only add missing tasks up to 10 per user.
