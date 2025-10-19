@@ -1,4 +1,4 @@
-import { prismaClient } from '../routes/index.js';
+import { prismaClient } from '../prisma-client.js';
 import { compareSync, hashSync } from 'bcrypt';
 
 export const RegisterController = async (req, res) => {
